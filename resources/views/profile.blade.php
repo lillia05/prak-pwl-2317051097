@@ -10,8 +10,8 @@
         body { font-family: 'Poppins', sans-serif; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
-    <div class="min-h-screen flex items-center justify-center p-6">
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div class="flex items-center justify-center p-6">
         <div class="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 p-8 w-full max-w-md">
             <!-- Header -->
             <div class="text-center mb-8">

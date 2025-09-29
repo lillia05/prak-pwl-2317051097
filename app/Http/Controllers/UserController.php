@@ -43,4 +43,33 @@ class UserController extends Controller
 
         return redirect()->to('/user');
     }
+
+    public function destroy($id)
+    {
+        $user = $this->userModel->findOrFail($id);
+        $user->delete();
+        return redirect()->to('/user')->with('success', 'User berhasil dihapus');
+    }
+
+    public function edit($id)
+    {
+        $user = $this->userModel->findOrFail($id);
+        $kelas = $this->kelasModel->getKelas();
+        return view('user_edit', [
+            'title' => 'Edit User',
+            'user' => $user,
+            'kelas' => $kelas
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = $this->userModel->findOrFail($id);
+        $user->update([
+            'nama' => $request->input('nama'),
+            'nim' => $request->input('nim'),
+            'kelas_id' => $request->input('kelas_id'),
+        ]);
+        return redirect()->to('/user')->with('success', 'User berhasil diupdate');
+    }
 }
