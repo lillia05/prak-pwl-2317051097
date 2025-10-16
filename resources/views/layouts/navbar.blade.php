@@ -47,6 +47,15 @@
                class="nav-link {{ request()->routeIs('user.create') ? 'active' : '' }}">
                 Create User
             </a>
+            <span style="width:1px; height:20px; background:#e2e8f0; margin:0 6px;"></span>
+            <a href="{{ url('/matakuliah') }}"
+               class="nav-link {{ request()->is('matakuliah') ? 'active' : '' }}">
+                List MK
+            </a>
+            <a href="{{ route('matakuliah.create') }}"
+               class="nav-link {{ request()->routeIs('matakuliah.create') ? 'active' : '' }}">
+                Create MK
+            </a>
         </div>
     </div>
     <div style="height: 3px; background: linear-gradient(90deg,#2563eb,#7c3aed);"></div>

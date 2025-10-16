@@ -7,22 +7,23 @@
     <div style="background: linear-gradient(135deg,#eef2ff 0%,#e8edff 50%,#faf5ff 100%); padding: 32px 16px; font-family: 'Poppins', sans-serif;">
         <div style="max-width: 640px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 28px;">
-                <h1 style="margin: 0; font-size: 28px; font-weight: 700; background: linear-gradient(90deg,#2563eb,#7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent;">Buat Mata Kuliah Baru</h1>
+                <h1 style="margin: 0; font-size: 28px; font-weight: 700; background: linear-gradient(90deg,#2563eb,#7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent;">Edit Mata Kuliah</h1>
                 <div style="width: 80px; height: 4px; background: linear-gradient(90deg,#2563eb,#7c3aed); border-radius: 999px; margin: 10px auto 0;"></div>
             </div>
 
             <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.7); border-radius: 24px; box-shadow: 0 25px 50px rgba(31,41,55,0.10); padding: 24px;">
-                <form action="{{ route('matakuliah.store') }}" method="POST">
+                <form action="{{ route('matakuliah.update', $mk->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
 
                     <div style="margin-bottom: 16px;">
                         <label for="nama_mk" style="display:block; font-weight:600; margin-bottom:6px; color:#374151;">Nama Mata Kuliah</label>
-                        <input type="text" id="nama_mk" name="nama_mk" value="{{ old('nama_mk') }}" required style="width:100%; max-width:100%; box-sizing:border-box; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none; font-family:'Poppins', sans-serif; font-size:14px;">
+                        <input type="text" id="nama_mk" name="nama_mk" value="{{ old('nama_mk', $mk->nama_mk) }}" required style="width:100%; max-width:100%; box-sizing:border-box; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none; font-family:'Poppins', sans-serif; font-size:14px;">
                     </div>
 
                     <div style="margin-bottom: 16px;">
                         <label for="sks" style="display:block; font-weight:600; margin-bottom:6px; color:#374151;">SKS</label>
-                        <input type="number" id="sks" name="sks" value="{{ old('sks') }}" required style="width:100%; max-width:100%; box-sizing:border-box; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none; font-family:'Poppins', sans-serif; font-size:14px;">
+                        <input type="number" id="sks" name="sks" value="{{ old('sks', $mk->sks) }}" required style="width:100%; max-width:100%; box-sizing:border-box; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none; font-family:'Poppins', sans-serif; font-size:14px;">
                     </div>
 
                     <div style="display:flex; gap:10px; justify-content:flex-end; margin-top: 16px;">
