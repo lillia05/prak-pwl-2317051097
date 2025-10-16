@@ -16,21 +16,25 @@
 
                     <div style="margin-bottom: 16px;">
                         <label for="nama" style="display:block; font-weight:600; margin-bottom:6px; color:#374151;">Nama</label>
-                        <input type="text" id="nama" name="nama" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;">
+                        <input type="text" id="nama" name="nama" value="{{ old('nama') }}" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;">
                     </div>
 
                     <div style="margin-bottom: 16px;">
                         <label for="nim" style="display:block; font-weight:600; margin-bottom:6px; color:#374151;">NPM</label>
-                        <input type="text" id="nim" name="nim" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;">
+                        <input type="text" id="nim" name="nim" value="{{ old('nim') }}" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;">
                     </div>
 
                     <div style="margin-bottom: 16px;">
                         <label for="kelas_id" style="display:block; font-weight:600; margin-bottom:6px; color:#374151;">Kelas</label>
-                        <select name="kelas_id" id="kelas_id" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;">
-                            @foreach ($kelas as $kelasItem)
-                                <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
-                            @endforeach
-                        </select>
+                        @if(isset($kelas) && count($kelas) > 0)
+                            <select name="kelas_id" id="kelas_id" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;">
+                                @foreach ($kelas as $kelasItem)
+                                    <option value="{{ $kelasItem->id }}" {{ (string)old('kelas_id') === (string)$kelasItem->id ? 'selected' : '' }}>{{ $kelasItem->nama_kelas }}</option>
+                                @endforeach
+                            </select>
+                        @else
+                            <div style="padding:12px 14px; border-radius:12px; border:1px solid #fecaca; background:#fef2f2; color:#b91c1c;">Data kelas belum tersedia. Silakan buat kelas terlebih dahulu.</div>
+                        @endif
                     </div>
 
                     <div style="display:flex; gap:10px; justify-content:flex-end; margin-top: 16px;">

@@ -35,11 +35,13 @@ class UserController extends Controller
     }    
 
     public function store(Request $request){
-        $this->userModel->create([
-            'nama' => $request->input('nama'),
-            'nim' => $request->input('nim'),
-            'kelas_id' => $request->input('kelas_id'),
+        $validated = $request->validate([
+            'nama' => ['required','string'],
+            'nim' => ['nullable','string'],
+            'kelas_id' => ['required','exists:kelas,id'],
         ]);
+
+        $this->userModel->create($validated);
 
         return redirect()->to('/user');
     }
